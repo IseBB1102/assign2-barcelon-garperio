@@ -11,14 +11,23 @@ To Do: Implement submit and cancel functionality.
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
     .login-container {
-      width: 300px;
+      width: 360px;
       margin: 100px auto;
+      background-color: #fff;
       padding: 20px;
-      border: 1px solid #ccc;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-title {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
     }
     input[type="text"], input[type="password"] {
       width: 100%;
@@ -28,33 +37,33 @@ To Do: Implement submit and cancel functionality.
       border-radius: 3px;
     }
     .btn-container {
-      display: flex;
-      justify-content: space-between;
+      text-align: center;
     }
     .btn-container button {
       padding: 10px 15px;
       border: none;
       border-radius: 3px;
       cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
     }
     .btn-container button.submit {
       background-color: #007bff;
-      color: white;
     }
-    .btn-container button.cancel {
-      background-color: #ccc;
+    .btn-container button.submit:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
-    <h2>Login</h2>
+    <h2 class="login-title">Login</h2>
     <form action="process_login.php" method="POST">
       <input type="text" name="username" placeholder="Username" required>
       <input type="password" name="password" placeholder="Password" required>
       <div class="btn-container">
-        <button type="submit" class="submit">Submit</button>
-        <button type="button" class="cancel">Cancel</button>
+        <button type="submit" class="submit">Login</button>
       </div>
     </form>
   </div>
