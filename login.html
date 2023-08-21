@@ -7,37 +7,39 @@ To Do: Implement submit and cancel functionality.
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-    function onLoginBtnClick() {
-      const errorMsg = "INCOMPLETE LOGIN DETAILS";
-      var username = document.getElementById("username").value.trim();
-      var isUsernameEmpty = true;
-      if(username.length === 0){
-        var isUsernameEmpty = true;
-        alert(errorMsg);
-      } else 
-      {
-      isUsernameEmpty = false;
-      }
-      console.log("isUsernameEmpty=", isUsernameEmpty);
-    }
-    function onClearBtnClick() {
-      document.getElementById("username").value = "";
-    }
-  </script>
-  <title>Login Page</title>
+    <title> LOGIN </title>
+    <script>
+        function onLoginBtnClick() {
+            var username = document.getElementById("txtUsername").value.trim();
+            var isUsernameEmpty = false;
+
+            if (username.length === 0) {
+                isUsernameEmpty = true;
+            }
+
+            console.log("isUsernameEmpty=", isUsernameEmpty);
+
+            // Return false to prevent form submission
+            return false;
+        }
+
+        function onClearBtnClick() {
+            document.getElementById("txtUsername").value = "";
+            document.getElementById("txtPassword").value = "";
+        }
+    </script>
 </head>
 <body>
-  <div class="login-container">
-    <h2 class="login-title">Login</h2>
     <form onsubmit="return onLoginBtnClick();">
-      <input type="text" id="username" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <div class="btn-container">
-        <button type="submit" onclick="onLoginBtnClick()">Login</button>
+        <label for="txtUsername">Username:</label><br>
+        <input type="text" name="txtUsername" id="txtUsername"><br>
+
+        <label for="txtPassword">Password:</label><br>
+        <input type="password" name="txtPassword" id="txtPassword"><br>
+
+        <button type="submit">Login</button>
         <button type="button" onclick="onClearBtnClick()">Clear</button>
-      </div>
     </form>
-  </div>
 </body>
 </html>
+
