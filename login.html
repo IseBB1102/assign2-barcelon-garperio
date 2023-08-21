@@ -7,27 +7,42 @@ To Do: Implement submit and cancel functionality.
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-    function onLoginBtnClick() {
-      alert(document.getElementById("username").value);
-    }
-    function onClearBtnClick() {
-      document.getElementById("username").value = "";
-    }
-  </script>
-  <title>Login Page</title>
+    <title> LOGIN </title>
+    <script>
+        function onLoginBtnClick() {
+            const errorMsg = "INCOMPLETE LOGIN DETAILS";
+            var username = document.getElementById("txtUsername").value.trim();
+            let isUsernameEmpty = false;
+
+            if (username.length === 0) {
+                isUsernameEmpty = true;
+                alert(errorMsg);
+                errorMsg = "ERROR: Either the username or the password were not provided. Please try again.";
+            }
+
+            console.log("isUsernameEmpty=", isUsernameEmpty);
+
+            // Return false to prevent form submission
+            return false;
+        }
+
+        function onClearBtnClick() {
+            document.getElementById("txtUsername").value = "";
+            document.getElementById("txtPassword").value = "";
+        }
+    </script>
 </head>
 <body>
-  <div class="login-container">
-    <h2 class="login-title">Login</h2>
-    <form action="process_login.php" method="POST">
-      <input type="text" id="username" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <div class="btn-container">
-        <button type="submit" onclick="onLoginBtnClick()">Login</button>
+    <form onsubmit="return onLoginBtnClick();">
+        <label for="txtUsername">Username:</label><br>
+        <input type="text" name="txtUsername" id="txtUsername"><br>
+
+        <label for="txtPassword">Password:</label><br>
+        <input type="password" name="txtPassword" id="txtPassword"><br>
+
+        <button type="submit">Login</button>
         <button type="button" onclick="onClearBtnClick()">Clear</button>
-      </div>
     </form>
-  </div>
 </body>
 </html>
+
